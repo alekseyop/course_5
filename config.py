@@ -1,9 +1,9 @@
 import os
 
+# корневая директория проекта
 ROOT_DIR = os.path.dirname(__file__)
 
-# DATA_DIR = os.path.join(ROOT_DIR, 'data')
-# Список ID компаний (employer_id) - их можно найти в API документации hh.ru или через поиск на сайте
+# Список ID компаний (employer_id)
 EMPLOYER_IDS = [
     '1740',  # Яндекс
     '3529',  # Сбербанк
