@@ -158,9 +158,6 @@ class DBManager:
         Метод закрывает соединение с базой данных
         :return:
         """
-
-        # self.print_select("SELECT * FROM employers;")  # для отладки
-
         if self.connection:
             self.connection.close()
 
@@ -188,10 +185,7 @@ class DBManager:
         SELECT * FROM employers;
         """
         self.print_select(select_query)
-        # with self.connection.cursor() as cursor:
-        #     cursor.execute(select_query)
-        #     result = cursor.fetchall()
-        # return result
+
 
     def get_all_vacancies(self):
         """

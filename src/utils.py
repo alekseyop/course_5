@@ -1,8 +1,9 @@
-import psycopg2
 import configparser
 import os
+
+import psycopg2
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
-from tabulate import tabulate
+
 
 def create_or_update_config(file_path):
     config = configparser.ConfigParser()
@@ -84,44 +85,6 @@ def create_db(file_path):
     conn.close()
 
 
-# def create_tables(file_path):
-#     config = configparser.ConfigParser()
-#     config.read(file_path, encoding='utf-8')
-#     dbname = config.get('postgresql', 'dbname')
-#     user = config.get('postgresql', 'user')
-#     password = config.get('postgresql', 'password')
-#     host = config.get('postgresql', 'host')
-#     port = config.get('postgresql', 'port')
-#
-#     conn = psycopg2.connect(dbname=dbname, user=user, password=password, host=host, port=port)
-#     cur = conn.cursor()
-#
-#     # Создание таблиц
-#     cur.execute('''
-#     CREATE TABLE IF NOT EXISTS employers (
-#         employer_id VARCHAR(8) PRIMARY KEY,
-#         name VARCHAR(255) NOT NULL,
-#         url VARCHAR(255)
-#     );
-#     ''')
-#
-#     cur.execute('''
-#     CREATE TABLE IF NOT EXISTS vacancies (
-#         vacancy_id VARCHAR(50) UNIQUE NOT NULL,
-#         name VARCHAR(255) NOT NULL,
-#         employer_id VARCHAR(8) NOT NULL,
-#         url VARCHAR(255),
-#         salary_from INTEGER,
-#         salary_to INTEGER,
-#         currency VARCHAR(3),
-#         FOREIGN KEY (employer_id) REFERENCES employers (employer_id)
-#     );
-#     ''')
-#     conn.commit()
-#     cur.close()
-#     conn.close()
-
-
 def draw_progress_bar(current: int, total: int, bar_length: int = 30):
     """
     Отображает прогресс загрузки.
@@ -136,4 +99,3 @@ def draw_progress_bar(current: int, total: int, bar_length: int = 30):
     bar = '[' + '#' * num_ticks + '_' * (bar_length - num_ticks) + ']'
     percentage = int(progress * 100)
     return f'{bar} {percentage}%'
-

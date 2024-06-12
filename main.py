@@ -15,7 +15,7 @@ def main():
     db_manager.insert_employer_data(employer_data)
     vacancy_data = db_manager.fetch_vacancy_data()
     db_manager.insert_vacancy_data(vacancy_data)
-    # db_manager.close_connection()
+
     while True:
         print('1 - получает список всех компаний и количество вакансий у каждой компании.\n'
               '2 - получает список всех вакансий с указанием названия компании,\n'
@@ -37,7 +37,6 @@ def main():
 
         elif action == '4':
             db_manager.get_vacancies_with_higher_salary()
-            #  db_manager.print_select("SELECT * FROM vacancies WHERE salary_from > (SELECT AVG(salary_from) FROM vacancies);")
 
         elif action == '5':
             word = input('Введите слово: ')
@@ -49,4 +48,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
